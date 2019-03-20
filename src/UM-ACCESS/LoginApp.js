@@ -23,7 +23,7 @@ class LoginApp extends Component
     {
         axios({
             method : 'post',
-            url : 'http://localhost:5000/',
+            url : 'http://localhost:5000/login',
             data : {
                 username : this.state.username,
                 password : this.state.password,                
