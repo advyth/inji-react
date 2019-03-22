@@ -3,10 +3,14 @@ import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import axios from 'axios';
+import LoginApp from './LoginApp';
+import {Redirect} from 'react-router-dom';
+import LandingApp from '../HOME/LandingApp';
 
 
 class RegisterApp extends Component
 {
+   
     constructor(props)
     {
         super(props);
@@ -14,6 +18,7 @@ class RegisterApp extends Component
             username : "",
             password : "",
             email : "",
+            redirect : false,
         }
         this.usernameHandle = this.usernameHandle.bind(this);
         this.passwordHandle = this.passwordHandle.bind(this);
@@ -23,6 +28,7 @@ class RegisterApp extends Component
     }
     register()
     {
+        var self = this;
         if(this.state.password == this.state.confirm_password)
         {
             axios({
@@ -34,9 +40,20 @@ class RegisterApp extends Component
                     password : this.state.password,                
                 }
             })
-            .then(function(data){
-                console.log(data.data);
+            .then(function(response){
+                if(response.data == "Registered")
+                {
+                    self.setState({
+                        redirect : true,
+                    });
+                    
+                }
+                else
+                {
+                    alert("Failed");
+                }
             });
+            
         }
         else
         {
@@ -71,6 +88,10 @@ class RegisterApp extends Component
     }
     render()
     {
+        if(this.state.redirect)
+        {
+            return <Redirect to={LandingApp} />
+        }
         return(
             <div className='bodyClass'>
                 <h1>inji</h1>
