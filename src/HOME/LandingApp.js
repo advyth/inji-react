@@ -10,6 +10,7 @@ class LandingApp extends Component
         super(props);
         this.state = {
             loadMovies : true,
+            movies : null,
         }
         this.getMovies = this.getMovies.bind(this);
 
@@ -17,13 +18,36 @@ class LandingApp extends Component
 
     getMovies()
     {
+        var self = this;
         axios.post('http://localhost:5000/api/get/movies',{
             auth : true,
         })
         .then(function(response){
-            return response.data[0].name;
+            self.setState({
+                movies : response.data,
+            });
+            
         });
-    
+        
+    }
+    renderMovies()
+    {
+        if(this.state.movies != null)
+        {
+            var row = [];
+            for(var i=0;i<this.state.movies.length;i++)
+            {
+                row.push(this.renderRow(i));
+                
+            }
+            return <ul>{row} </ul>
+        }
+    }
+    renderRow(index)
+    {
+        //TODO add movie card JSX code.
+        
+        return <li>{this.state.movies[index].name}</li>
     }
 
     render()
@@ -36,11 +60,11 @@ class LandingApp extends Component
                 <div className='main-content'>
                     <input type="text" placeholder="search" className='searchbar' /><button className='gobutton' onClick={this.getMovies} > GO</button>
                 </div>
-                <div className='movie-list'>
-                    //TODO render movie list here.
-                    
+                <div className='movie-list' onLoad={this.getMovies()}>
+                    <h1>{this.renderMovies()}</h1>
+                
                 </div>
-                    }
+                    
             </Container>
         );
     }
