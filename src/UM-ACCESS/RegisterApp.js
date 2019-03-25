@@ -90,12 +90,12 @@ class RegisterApp extends Component
     {
         if(this.state.redirect)
         {
-            return <Redirect to={LandingApp} />
+            return <Redirect to='/' />
         }
         return(
             <div className='bodyClass'>
                 <h1>inji</h1>
-                <h3>movies. actors. reviews.</h3>
+                <h3>movies. actors. revews.</h3>
                 <Container className='Container'>
                     <Row>
                         <Col className='LoginBox'>

@@ -122,3 +122,43 @@ body
     color : rgb(0, 14, 44);
     cursor : pointer;
 }
+.detail-add
+{
+    text-align: center;
+}
+.firstInput
+{
+    margin-top : 8vh;
+    text-align: center;
+    border-radius: 0.3vh;
+    border : none;
+    width : 19vw;
+    height: 5vh;
+}
+.nextInput
+{
+    text-align: center;
+    margin-top :3vh;
+    width : 19vw;
+    height: 5vh;
+}
+.movie-submit
+{
+    border:none;
+    background-color: rgb(0, 255, 242);
+    color : black;
+    border-radius: 0.5vh;
+    margin-top : 6vh;
+    width: 10vw ; 
+    height : 4vh;
+}
+.detail-add h1
+{
+    color : white;
+}
+.movie-list
+{
+    background-color: rgb(0, 98, 163);
+    height: 70vh;
+    margin-top : 9vh;
+}

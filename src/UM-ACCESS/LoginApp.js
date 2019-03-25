@@ -5,7 +5,7 @@ import Row from 'react-bootstrap/Row';
 import {Redirect} from 'react-router-dom';
 import LandingApp from '../HOME/LandingApp';
 import '../Styles/Login.css';
-const axios = require('axios');
+import axios from 'axios';
 
 
 
@@ -24,26 +24,37 @@ class LoginApp extends Component
         this.passwordHandle = this.passwordHandle.bind(this);
         this.login = this.login.bind(this);
     }
-    login(event)
+
+    login()
     {
         var self = this;
-        axios({
-            method : 'post',
-            url : 'http://localhost:5000/login',
-            data : {
+        if(this.state.username != '' && this.state.password != '')
+        {
+            axios.post('http://localhost:5000/login',{
                 email : this.state.username,
-                password : this.state.password,                
-            }
-        })
-        .then(function(response){
-            if(response.data == "Success")
-            {
-                self.setState({
-                    redirect : true,
-                });
-            }
-        }); 
+                password : this.state.password,
+            })
+            .then((response)=>{
+                if(response.data == "Success")
+                {
+                    self.setState({
+                        redirect : true
+                    });
+                }
+                else
+                {
+                    alert(response.data);
+                }
+            });
+        }
+        else
+        {
+            alert("Username and password cannot be empty");
+        }
+        
     }
+
+    
     usernameHandle(event)
     {
         this.setState({
@@ -60,7 +71,7 @@ class LoginApp extends Component
     {
         if(this.state.redirect)
         {
-            return <Redirect to={LandingApp} />
+            return <Redirect to='/home' />
         }
         return(
             <div className='bodyClass'>
@@ -71,7 +82,7 @@ class LoginApp extends Component
                         <Col className='LoginBox'>
                             <input type='text' className='InputBox-1' placeholder='email' onChange={this.usernameHandle} /><br/>
                             <input type='password' className='InputBox-2' placeholder='password' onChange={this.passwordHandle} /><br/>
-                            <button className='LoginButton' onClick={this.login}>login</button> <br/><br/><br/>
+                            <button className='LoginButton' onClick={this.login} >login</button> <br/><br/><br/>
                             <p>Don't have an account ? <a href='/register'>Register</a></p>
                         </Col>
                     </Row>
