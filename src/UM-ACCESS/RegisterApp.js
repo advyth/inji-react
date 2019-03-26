@@ -33,36 +33,44 @@ class RegisterApp extends Component
     register()
     {
         var self = this;
-        if(this.state.password == this.state.confirm_password)
+        if(this.state.username != '' && this.state.password != '')
         {
-            axios({
-                method : 'post',
-                url : 'http://localhost:5000/register',
-                data : {
-                    email : this.state.email,
-                    username : this.state.username,
-                    password : this.state.password,                
-                }
-            })
-            .then(function(response){
-                if(response.data == "Registered")
-                {
-                    self.setState({
-                        redirect : true,
-                    });
-                    
-                }
-                else
-                {
-                    alert("Failed");
-                }
+            if(this.state.password == this.state.confirm_password)
+            {
+                axios({
+                    method : 'post',
+                    url : 'http://localhost:5000/register',
+                    data : {
+                        email : this.state.email,
+                        username : this.state.username,
+                        password : this.state.password,                
+                    }
+                })
+                .then(function(response){
+                    if(response.data == "Registered")
+                    {
+                        self.setState({
+                            redirect : true,
+                        });
+                        
+                    }
+                    else
+                    {
+                        alert("Failed");
+                    }
             });
             
+            }
+            else
+            {
+                alert("Passwords do not match");
+            }
         }
         else
         {
-            alert("Passwords do not match");
+            alert("Fields cannot be empty");
         }
+        
         
     }
     usernameHandle(event)
@@ -79,7 +87,7 @@ class RegisterApp extends Component
     }
     confirmPasswordHandle(event)
     {
-        if(this.state.password == event.target.value)
+        if(this.state.password == event.target.value && event.target.value != "")
         {
             this.setState({url : green_tick, opacity : 1});
         }

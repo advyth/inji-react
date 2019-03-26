@@ -21,7 +21,10 @@ class LandingApp extends Component
         
 
     }
-
+    componentDidMount()
+    {
+        this.getMovies();
+    }
     getMovies()
     {
         var self = this;
@@ -73,12 +76,12 @@ class LandingApp extends Component
         }
         return(
             <Container fluid>
-                 <NavbarApp auth={this.state.auth}/>
+                <NavbarApp auth={this.state.auth}/>
                 <Container fluid className='main-content'>
                     <input type="text" placeholder="search" className='searchbar' /><button className='gobutton' onClick={this.getMovies} > GO</button>
                 </Container>
                 <Container fluid className='movie-list'>
-                    <Row  onLoad={this.getMovies()}>
+                    <Row>
                         {this.renderMovies()}
                     </Row>
                 </Container>

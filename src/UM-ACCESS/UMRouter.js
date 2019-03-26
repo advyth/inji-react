@@ -4,6 +4,7 @@ import LoginApp from './LoginApp';
 import RegisterApp from './RegisterApp';
 import LandingApp from '../HOME/LandingApp';
 import Admin from '../ADMIN/Admin';
+import MovieApp from '../MOVIE_DETAILS/MovieApp';
 
 class UMRouter extends Component
 {
@@ -16,6 +17,7 @@ class UMRouter extends Component
                     <Route path='/register' component={RegisterApp} />
                     <Route path='/home' component={LandingApp} />
                     <Route path='/admin' component={Admin} />
+                    <Route path='/movie/:id' component={MovieApp} />
                 </Switch>
             </BrowserRouter>
         );
