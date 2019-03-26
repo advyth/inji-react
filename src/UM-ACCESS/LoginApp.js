@@ -35,8 +35,10 @@ class LoginApp extends Component
                 password : this.state.password,
             })
             .then((response)=>{
-                if(response.data == "Success")
+                if(response.data[1] == "Success")
                 {
+                    localStorage.setItem('auth', true);
+                    localStorage.setItem('name', response.data[0])
                     self.setState({
                         redirect : true
                     });

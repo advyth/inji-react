@@ -40,28 +40,26 @@ class Admin extends Component
 			url : this.state.url,
 		})
 		.then((response)=>{
-			console.log(response.data);
+			alert(response.data);
+
 		});
 	}
 	render()
 	{
 		return(
-			<Container>
-				<Row>
-					<div className='detail-add'>
-						<h1>Add movie </h1>
-						<form>
-							<input type='text' className='firstInput' name='movieName' placeholder='movie name' onChange={this.handleChange}/><br/>
-							<input type='text' className='nextInput' name='director' placeholder='director' onChange={this.handleChange} /><br/>
-							<input type='text' className='nextInput' name='genre' placeholder='genre' onChange={this.handleChange} /><br/>
-							<input type='text' className='nextInput' name='actor' placeholder='actor' onChange={this.handleChange} /><br/>
-							<input type='text' className='nextInput' name='rating' placeholder='rating' onChange={this.handleChange} /><br/>
-							<input type='text' className='nextInput' name='url' placeholder='url' onChange={this.handleChange} /><br/>
-							<input type='button' className='movie-submit' value='submit' onClick={this.addMovie} /><br/>
-						</form>
-					</div>
-				</Row>
-			</Container>
+			<div className='detail-add'>
+				<h1>Add movie </h1>
+				<form>
+					<input type='text' className='firstInput' name='movieName' placeholder='movie name' onChange={this.handleChange}/><br/>
+					<input type='text' className='nextInput' name='director' placeholder='director' onChange={this.handleChange} /><br/>
+					<input type='text' className='nextInput' name='genre' placeholder='genre' onChange={this.handleChange} /><br/>
+					<input type='text' className='nextInput' name='actor' placeholder='actor' onChange={this.handleChange} /><br/>
+					<input type='text' className='nextInput' name='rating' placeholder='rating' onChange={this.handleChange} /><br/>
+					<input type='text' className='nextInput' name='url' placeholder='url' onChange={this.handleChange} /><br/>
+					<input type='button' className='movie-submit' value='submit' onClick={this.addMovie} /><br/>
+				</form>
+			</div>
+
 			);
 	}
 }
