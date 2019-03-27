@@ -2,7 +2,16 @@ body
 {
     overflow-x:hidden;
 }
-
+.modal_submit_button
+{
+    margin-top : 4vh;
+    background-color: rgb(0, 98, 163);
+    color : white;
+    border : none;
+    width  :10vw;
+    height: 6vh;
+    border-radius: 0.3vh;
+}
 
 .bodyClass
 {
