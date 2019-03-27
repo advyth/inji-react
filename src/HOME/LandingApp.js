@@ -16,8 +16,11 @@ class LandingApp extends Component
             loadMovies : true,
             movies : null,
             auth : localStorage.getItem('auth'),
+            movie_redirect : false,
+            movie_id : '',
         }
         this.getMovies = this.getMovies.bind(this);
+        this.movieRedirect = this.movieRedirect.bind(this);
         
 
     }
@@ -39,6 +42,14 @@ class LandingApp extends Component
         });
         
     }
+    movieRedirect(index)
+    {
+        this.setState({
+            movie_redirect : true,
+            movie_id : this.state.movies[index].id,
+        });
+        
+    }
     renderMovies()
     {
         if(this.state.movies != null)
@@ -54,7 +65,7 @@ class LandingApp extends Component
     }
     renderRow(index)
     {
-         return(<Col key={index} md={2} className='movie-card'>
+         return(<Col name={index} onClick={()=>this.movieRedirect(index)} key={index} md={2} className='movie-card'>
                 <h6>
                     {this.state.movies[index].name} 
                     <Image className='poster-img' src={this.state.movies[index].url} fluid></Image>
@@ -74,17 +85,24 @@ class LandingApp extends Component
         {
             return <Redirect to='/' />
         }
+        if(this.state.movie_redirect)
+        {
+            var movie_url = '/movie/' + this.state.movie_id;
+            return <Redirect to={movie_url} />
+        }
         return(
             <Container fluid>
                 <NavbarApp auth={this.state.auth}/>
                 <Container fluid className='main-content'>
                     <input type="text" placeholder="search" className='searchbar' /><button className='gobutton' onClick={this.getMovies} > GO</button>
                 </Container>
+                <form>
                 <Container fluid className='movie-list'>
                     <Row>
                         {this.renderMovies()}
                     </Row>
                 </Container>
+                </form>
             </Container>
         );
     }
