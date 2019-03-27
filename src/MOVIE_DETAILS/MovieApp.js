@@ -26,6 +26,7 @@ class MovieApp extends Component
 			star_rating : 0,
 			star_type : '',
 			star_clicked : [1,0,0,0,0],
+			db_review : {0:{username : '', review : '', rating :'', id : ''}}
 		}
 		this.getMovieDetails = this.getMovieDetails.bind(this);
 		this.renderStars = this.renderStars.bind(this);
@@ -36,6 +37,8 @@ class MovieApp extends Component
 		this.renderGreyStar = this.renderGreyStar.bind(this);
 		this.handleStarClick = this.handleStarClick.bind(this);
 		this.sendReview = this.sendReview.bind(this);
+		this.loadReviews = this.loadReviews.bind(this);
+		this.renderReviews = this.renderReviews.bind(this);
 	}
 	getMovieDetails()
 	{
@@ -60,6 +63,7 @@ class MovieApp extends Component
 	}
 	sendReview()
 	{
+		var self = this;
 		axios.post('http://localhost:5000/api/add/review',{
 			review : this.state.review,
 			id : this.state.id,
@@ -68,6 +72,8 @@ class MovieApp extends Component
 		})
 		.then(function(response){
 			console.log(response.data);
+			self.modalHide();
+			self.loadReviews();
 		});
 	}
 	renderStars()
@@ -159,10 +165,35 @@ class MovieApp extends Component
 	componentDidMount()
 	{
 		this.getMovieDetails();
+		this.loadReviews();
 	}
 	modalHide()
 	{
 		this.setState({showModal : false});
+	}
+	renderReviews()
+	{
+		var review_card = [];
+		for(var i = 0;i<this.state.db_review.length;i++)
+		{
+			review_card.push(<div className='review-card'>
+							<h6>{this.state.db_review[i].review}</h6>
+						</div>);
+		}
+		return review_card;
+	}
+	loadReviews()
+	{
+		var self = this;
+		axios.post('http://localhost:5000/api/get/reviews',{
+			id : this.state.id
+		})
+		.then(function(response){
+			self.setState({
+				db_review : response.data,
+			});
+			console.log(response.data);
+		});
 	}
 	showModal()
 	{
@@ -201,9 +232,7 @@ class MovieApp extends Component
 						</div>
 					</Col>
 					<Col sm className='reviews'>
-						<div className='review-card'>
-							<h6>Nice movie</h6>
-						</div>
+						{this.renderReviews()}
 						<div className='comment'>
 							<input type='text' onChange={this.reviewHandler}/>
 							<div onClick={this.addReview} className='review-submit-button'><h4>submit</h4></div>
