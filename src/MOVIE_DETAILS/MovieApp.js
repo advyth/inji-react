@@ -51,7 +51,7 @@ class MovieApp extends Component
 			self.setState({
 				moviedetails : response.data
 			});
-			console.log(response.data[0].name);
+			
 
 		});
 		
@@ -175,9 +175,9 @@ class MovieApp extends Component
 	{
 		var star_amount = this.state.moviedetails[0].rating/2;
 		var stars = [];
-		for(var i=0;i<star_amount;i++)
+		for(var i=0;i<=count;i++)
 		{
-			stars.push(<img src={star} key={i} height='20' width='20' />);
+			stars.push(<img src={star} style={{marginBottom : '3vh', marginTop : '2vh'}} key={i} height='20' width='20' />);
 		}
 		console.log("hit");
 		return stars;
@@ -185,12 +185,12 @@ class MovieApp extends Component
 	renderReviews()
 	{
 		var review_card = [];
-		for(var i = 0;i<this.state.db_review.length;i++)
+		for(var i = this.state.db_review.length-1;i >=0;i--)
 		{
 			review_card.push(<div className='review-card'>
-							<h6>{this.state.db_review[i].review}</h6>
-							<br/>
-							{this.renderReviewCardStars(this.state.db_review[i].rating)}
+							<h6>"{this.state.db_review[i].review}"</h6>
+							{this.renderReviewCardStars(this.state.db_review[i].rating)}<br/>
+							<h7>By <b>{this.state.db_review[i].username} </b></h7>
 						</div>);
 		}
 		return review_card;
@@ -217,8 +217,9 @@ class MovieApp extends Component
 				            <Modal.Title>Give a rating</Modal.Title>
 				          </Modal.Header>
 				          <Modal.Body style={{textAlign : 'center'}}>
+				          	<input className="review_text_field" placeholder="Write your review here" type='text' onChange={this.reviewHandler}/><br/>
 				          	{this.renderGreyStar()}<br/>
-				          	<button onClick={this.sendReview} className='modal_submit_button'>submit</button>
+				          	<button onClick={this.sendReview} className='modal_submit_button'><b>Publish review</b></button>
 				          </Modal.Body>
 				          <Modal.Footer>
 				          </Modal.Footer>
@@ -233,7 +234,7 @@ class MovieApp extends Component
 	render()
 	{
 
-		document.body.style.backgroundColor = "white";
+		document.body.style.backgroundColor = "#e4e9f0";
 		return(
 			<Container fluid>
 				<NavbarApp auth={localStorage.getItem('auth')}/>
@@ -251,10 +252,7 @@ class MovieApp extends Component
 					</Col>
 					<Col sm className='reviews'>
 						{this.renderReviews()}
-						<div className='comment'>
-							<input type='text' onChange={this.reviewHandler}/>
-							<div onClick={this.addReview} className='review-submit-button'><h4>submit</h4></div>
-						</div>
+						<button class="floating-button" onClick={this.addReview} title="Go to top"><b>+</b></button>
 					</Col>
 					{this.showModal()}
 					
