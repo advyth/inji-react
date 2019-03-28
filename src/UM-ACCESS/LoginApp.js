@@ -77,8 +77,8 @@ class LoginApp extends Component
         }
         return(
             <div className='bodyClass'>
-                <h1>inji</h1>
-                <h3>movies. actors. reviews.</h3>
+                <b><h1>inji</h1></b>
+                <strong><h3>movies. actors. reviews.</h3></strong>
                 <Container className='Container'>
                     <Row>
                         <Col className='LoginBox'>

@@ -171,6 +171,17 @@ class MovieApp extends Component
 	{
 		this.setState({showModal : false});
 	}
+	renderReviewCardStars(count)
+	{
+		var star_amount = this.state.moviedetails[0].rating/2;
+		var stars = [];
+		for(var i=0;i<star_amount;i++)
+		{
+			stars.push(<img src={star} key={i} height='20' width='20' />);
+		}
+		console.log("hit");
+		return stars;
+	}
 	renderReviews()
 	{
 		var review_card = [];
@@ -178,6 +189,8 @@ class MovieApp extends Component
 		{
 			review_card.push(<div className='review-card'>
 							<h6>{this.state.db_review[i].review}</h6>
+							<br/>
+							{this.renderReviewCardStars(this.state.db_review[i].rating)}
 						</div>);
 		}
 		return review_card;
@@ -219,17 +232,22 @@ class MovieApp extends Component
 	}
 	render()
 	{
+
+		document.body.style.backgroundColor = "white";
 		return(
 			<Container fluid>
 				<NavbarApp auth={localStorage.getItem('auth')}/>
 				<Row>
 					<Col sm className='movie-detail-card'>
-						<h4>{this.state.moviedetails[0].name}</h4><br />
-							
+					
+						<h4><b>{this.state.moviedetails[0].name}</b></h4><br />
+
 						<Image className='detail-poster' src={this.state.moviedetails[0].url} fluid />
 						<div className='star-div'>
 							{this.renderStars()}
 						</div>
+						
+
 					</Col>
 					<Col sm className='reviews'>
 						{this.renderReviews()}

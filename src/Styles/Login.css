@@ -1,6 +1,7 @@
 body
 {
     overflow-x:hidden;
+    background-color: #eff3f8;
 }
 .modal_submit_button
 {
@@ -16,16 +17,17 @@ body
 .bodyClass
 {
     text-align: center;
+    color: #e00022;
     
 }
 .bodyClass h1
 {
     margin-top: 8vh;
-    color : rgb(0, 255, 242);
+    color : #e00022;
 }
 .bodyClass h3
 {
-    color : rgb(0, 255, 242);
+    color : #e00022;
     margin-bottom : 2vh;
 }
 .LoginContainer
@@ -40,6 +42,7 @@ body
     height: 4vh;
     border-radius: 0.5vh;
     border : none;
+    background-color: #e4e9f0;
 }
 .InputBox-2
 {
@@ -48,14 +51,15 @@ body
     width: 18vw;
     height: 4vh;
     border-radius: 0.5vh;
+    background-color: #e4e9f0;
     border : none;
 }
 .LoginButton
 {
     margin-top:5vh;
     width: 10vw;
-    background-color: rgb(0, 255, 242);
-    color : rgb(0, 14, 44);
+    background-color: #e00022;
+    color : white;
     border : none;
     border-radius: 0.6vh;box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     font-family: 'Montserrat', sans-serif;
@@ -70,7 +74,7 @@ body
 .LoginBox
 {
     text-align: center;
-    background-color: rgb(0, 98, 163);
+    background-color:#ffffff;
     margin : auto;
     max-width : 35vw;
     height: 55vh;
@@ -83,11 +87,11 @@ body
 }
 .LoginBox a 
 {
-    color : rgb(0, 255, 242);
+    color : #e00022;
 }
 .LoginBox p
 {
-    color : rgb(0, 255, 242);
+    color : #e00022;
 }
 
 .homeDiv
@@ -102,6 +106,7 @@ body
     text-align: center;
     border-radius: 1vh;
     border : none;
+    background-color : #e6e8f0;
     font-family: 'Montserrat', sans-serif;
 
 }
@@ -113,8 +118,8 @@ body
 }
 .gobutton
 {
-    background-color: rgb(0, 255, 242);
-    color : rgb(0, 14, 44);
+    background-color: #e00022;
+    color : white;
     border : none;
     border-radius: 1vh;
     height: 6vh;
@@ -165,7 +170,7 @@ body
 }
 .movie-list
 {
-    background-color: rgb(0, 98, 163);
+    background-color : #e6e8f0;
     padding-top: 2vh;
     height: 100%;
     padding-bottom: 10vh;
@@ -175,26 +180,29 @@ body
 {
     height: 55vh;
     padding-top: 1vh;
-    background-color: white;
+    background-color:#e00022;
     max-width: 20vw;
     margin-top : 5vh;
     margin-left : 2.75vw;
     text-align: center;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    color : white;
+    border-radius: 1.2vh;
 
 }
 .movie-card:hover
 {
     cursor: pointer;
-    background-color: black;
-    color:white;
+    background-color: white;
+    color:#e00022;
     transition-duration: 0.3s;
 }
 #dropdown-basic-button
 {
     float : right;
     margin-right:2vw;   
-    background-color: rgb(0, 14, 44);
+    background-color: white;
+    color : #e00022;
     border : none ;
     text-decoration: none;
     outline: none;
@@ -205,13 +213,14 @@ body
 }
 .nav-bar
 {
-    background-color: white;
+    background-color: #e00022;
     margin : auto;
     padding: 0px;
     padding-top: 1.8vh;
-    color : rgb(0, 14, 44);
+    color : white;
     text-align: center;
     height: 10vh;
+
 }
 .nav-bar h2
 {
@@ -231,6 +240,7 @@ body
 .movie-detail-card
 {
     background-color : white;
+    color : #e00022;
     max-width : 60vw;
     position: fixed;
     height: 80%;
@@ -238,12 +248,14 @@ body
     margin-left : 4vh;
     text-align: center;
     padding-top: 4vh;
+    border-radius: 2vh;
+
 }
 
 .reviews
 {
     text-align: center;
-    background-color :rgb(24, 36, 63);
+    background-color :white;  
     margin-left: 62%;
     max-width:  40vw;
     height: 100%;
@@ -252,8 +264,10 @@ body
 .review-card
 {
     margin-right : 3%;
+    padding-top : 3vh;
     margin-top : 2%;
-    background-color: rgb(75, 111, 193);
+    background-color: #e00022;
+    color:white;
     border-radius: 0.7vh;
     height: 10vh;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
@@ -269,6 +283,8 @@ body
     margin-top  :26%;
     background-color: rgb(0, 14, 44);
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    border-top-right-radius: 1.9vh;
+    border-top-left-radius: 1.9vh;    
     color: white;
 
 
@@ -278,8 +294,9 @@ body
         width : 100%;
         height: 60%;
         border : none;
-        border-bottom-style:  solid;
-        border-bottom-width: 1.6px;
+        background-color: #e4e9f0;
+        border-top-right-radius: 2vh;
+        border-top-left-radius: 2vh;
 
 }.star-div
 {
@@ -293,8 +310,11 @@ body
 .review-submit-button
 {
     width  :100%;
-    background-color: rgb(0, 14, 44);
+    background-color: #e00022;
     height: 50%;
+    color : white;
+    border-bottom-right-radius: 2vh;
+    border-bottom-left-radius: 2vh;
 }
 .review-submit-button:hover
 {
