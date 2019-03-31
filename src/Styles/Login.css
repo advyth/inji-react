@@ -93,6 +93,36 @@ body
 {
     color : #e00022;
 }
+.searchResultCard
+{
+    background-color: white;
+    color : #e00022;
+    border-radius: 0.5vh;
+    height: 100%;
+    margin: auto;
+    max-width: 96%;
+    padding-top: 3vh;
+    padding-bottom : 3vh;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+
+
+}
+.searchResultCard h3 
+{
+    float: left;
+    display: block;
+}
+.searchResultCard img
+{
+    float: right;
+    display: inline;
+}
+.searchResultCard h5
+{
+    float: left;
+    display: block;
+}
+
 
 .homeDiv
 {
@@ -100,12 +130,14 @@ body
 }
 .searchbar
 {
+    border-style: solid;
+    border-width : 2px;
+    border-color : #e00022;
     margin-top : 10vh;
     width : 40vw;
     height: 6vh;
     text-align: center;
     border-radius: 1vh;
-    border : none;
     background-color : white;
     font-family: 'Montserrat', sans-serif;
 

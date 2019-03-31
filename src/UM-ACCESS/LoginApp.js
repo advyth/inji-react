@@ -19,6 +19,7 @@ class LoginApp extends Component
             username : "",
             password : "",
             redirect : false,
+            loginButtonValue : 'login',
         }
         this.usernameHandle = this.usernameHandle.bind(this);
         this.passwordHandle = this.passwordHandle.bind(this);
@@ -30,6 +31,9 @@ class LoginApp extends Component
         var self = this;
         if(this.state.username != '' && this.state.password != '')
         {
+            this.setState({
+                loginButtonValue : "..."
+            });
             axios.post('http://localhost:5000/login',{
                 email : this.state.username,
                 password : this.state.password,
@@ -84,7 +88,7 @@ class LoginApp extends Component
                         <Col className='LoginBox'>
                             <input type='text' className='InputBox-1' placeholder='email' onChange={this.usernameHandle} /><br/>
                             <input type='password' className='InputBox-2' placeholder='password' onChange={this.passwordHandle} /><br/>
-                            <button className='LoginButton' onClick={this.login} >login</button> <br/><br/><br/>
+                            <button className='LoginButton' onClick={this.login} >{this.state.loginButtonValue}</button> <br/><br/><br/>
                             <p>Don't have an account ? <a href='/register'>Register</a></p>
                         </Col>
                     </Row>

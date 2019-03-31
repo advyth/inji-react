@@ -173,9 +173,8 @@ class MovieApp extends Component
 	}
 	renderReviewCardStars(count)
 	{
-		var star_amount = this.state.moviedetails[0].rating/2;
 		var stars = [];
-		for(var i=0;i<=count;i++)
+		for(var i=0;i<count;i++)
 		{
 			stars.push(<img src={star} style={{marginBottom : '3vh', marginTop : '2vh'}} key={i} height='20' width='20' />);
 		}

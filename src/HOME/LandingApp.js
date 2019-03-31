@@ -18,10 +18,12 @@ class LandingApp extends Component
             auth : localStorage.getItem('auth'),
             movie_redirect : false,
             movie_id : '',
+            redirect : false,
         }
         this.getMovies = this.getMovies.bind(this);
         this.movieRedirect = this.movieRedirect.bind(this);
-        
+        this.searchBarHandler = this.searchBarHandler.bind(this);
+        this.searchRedirect = this.searchRedirect.bind(this);
 
     }
     componentDidMount()
@@ -73,12 +75,23 @@ class LandingApp extends Component
             </Col>);       
         
     }
+    searchRedirect()
+    {
+        this.setState({
+            redirect : true,
+        });
+    }
 
     checkAuth()
     {
         console.log(this.state.auth);
     }
-
+    searchBarHandler(event)
+    {
+        this.setState({
+            search : event.target.value,
+        });
+    }
     render()
     {
         if(!this.state.auth)
@@ -90,11 +103,16 @@ class LandingApp extends Component
             var movie_url = '/movie/' + this.state.movie_id;
             return <Redirect to={movie_url} />
         }
+        if(this.state.redirect)
+        {
+            var url = "/search/" + this.state.search;
+            return <Redirect to={url} />
+        }
         return(
             <Container fluid>
                 <NavbarApp auth={this.state.auth}/>
                 <Container fluid className='main-content'>
-                    <input type="text" placeholder="search" className='searchbar' /><button className='gobutton' onClick={this.getMovies} > GO</button>
+                    <input type="text" placeholder="search" onChange={this.searchBarHandler} className='searchbar' /><button className='gobutton' onClick={this.searchRedirect} > GO</button>
                 </Container>
                 <form>
                 <Container fluid className='movie-list'>
