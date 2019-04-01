@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import Alert from 'react-bootstrap/Alert';
 import axios from 'axios';
 import LoginApp from './LoginApp';
 import {Redirect} from 'react-router-dom';
@@ -23,6 +24,8 @@ class RegisterApp extends Component
             redirect : false,
             url : "",
             opacity : 0,
+            showAlert : false,
+            alertMessage : "",
         }
         this.usernameHandle = this.usernameHandle.bind(this);
         this.passwordHandle = this.passwordHandle.bind(this);
@@ -54,21 +57,30 @@ class RegisterApp extends Component
                         });
                         
                     }
-                    else
+                    else if(response.data == "Exists")
                     {
-                        alert("Failed");
+                        self.setState({
+                            showAlert : true,
+                            alertMessage : "This account exists.",
+                        });
                     }
             });
             
             }
             else
             {
-                alert("Passwords do not match");
+                this.setState({
+                    showAlert : true,
+                    alertMessage : "Passwords do not match.",
+                });
             }
         }
         else
         {
-            alert("Fields cannot be empty");
+            this.setState({
+                    showAlert : true,
+                    alertMessage : "Fields cannot be empty.",
+                });
         }
         
         
@@ -77,12 +89,14 @@ class RegisterApp extends Component
     {
         this.setState({
             username : event.target.value,
+            showAlert : false,
         });
     }
     passwordHandle(event)
     {
         this.setState({
             password : event.target.value,
+            showAlert : false,
         });
     }
     confirmPasswordHandle(event)
@@ -102,6 +116,7 @@ class RegisterApp extends Component
     emailHandle(event)
     {
         this.setState({
+            showAlert  :false,
             email : event.target.value,
         });
 
@@ -110,10 +125,16 @@ class RegisterApp extends Component
     {
         if(this.state.redirect)
         {
-            return <Redirect to='/' />
+            return <Redirect to='/created=true' />
         }
         return(
             <div className='bodyClass'>
+                <Alert show={this.state.showAlert} variant="danger">
+                  <Alert.Heading>Alert</Alert.Heading>
+                  <p>
+                    {this.state.alertMessage}<br />
+                  </p>
+                </Alert>
                 <h1>inji</h1>
                 <h3>movies. actors. reviews.</h3>
                 <Container className='Container'>

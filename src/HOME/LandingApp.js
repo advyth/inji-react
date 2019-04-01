@@ -3,6 +3,7 @@ import NavbarApp from './NavbarApp';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import Alert from 'react-bootstrap/Alert';
 import axios from 'axios';
 import Image from 'react-bootstrap/Image';
 import {Redirect} from 'react-router-dom';
@@ -19,11 +20,16 @@ class LandingApp extends Component
             movie_redirect : false,
             movie_id : '',
             redirect : false,
+            autoComplete : "",
+            showAutoComplete : false,
         }
         this.getMovies = this.getMovies.bind(this);
         this.movieRedirect = this.movieRedirect.bind(this);
         this.searchBarHandler = this.searchBarHandler.bind(this);
         this.searchRedirect = this.searchRedirect.bind(this);
+        this.autoCompleteFetch = this.autoCompleteFetch.bind(this);
+        this.renderResult = this.renderResult.bind(this);
+        this.renderAutoBox = this.renderAutoBox.bind(this);
 
     }
     componentDidMount()
@@ -90,7 +96,60 @@ class LandingApp extends Component
     {
         this.setState({
             search : event.target.value,
+            showAutoComplete : true,
         });
+        this.autoCompleteFetch();
+    }
+    autoCompleteFetch()
+    {
+     
+            var self = this;
+            var term = "@";
+            if(this.state.search != "")
+            {
+                term = this.state.search;
+            }
+            axios.post("http://localhost:5000/api/autocomplete/",{
+                search : term,
+            })
+            .then(function(response){
+                self.setState({
+                    autoComplete : response.data,
+                });
+                console.log(self.state.autoComplete);
+            });
+
+        
+    }
+    renderResult()
+    {
+        if(this.state.search != "")
+        {
+           if(this.state.autoComplete != "")
+           {
+               var div = [];
+               for(var i = 0;i<this.state.autoComplete.length;i++)
+               {    var url = "/movie/" + this.state.autoComplete[i].id;
+                    div.push(<a style={{color : "red"}} href={url}><h6 key={i}>{this.state.autoComplete[i].name}</h6></a>);
+                    div.push(<hr />)
+               }
+               return div;
+               
+           }
+        }
+       return "";
+       
+       
+    }
+    renderAutoBox()
+    {
+        if(this.state.showAutoComplete && this.state.search != "")
+        {
+            return(<div className="autoCompleteBox ">
+                    {this.renderResult()}
+                    </div>);
+        }
+        
     }
     render()
     {
@@ -112,8 +171,9 @@ class LandingApp extends Component
             <Container fluid>
                 <NavbarApp auth={this.state.auth}/>
                 <Container fluid className='main-content'>
-                    <input type="text" placeholder="search" onChange={this.searchBarHandler} className='searchbar' /><button className='gobutton' onClick={this.searchRedirect} > GO</button>
-                </Container>
+                    <input style={{marginBottom : "2vh"}} type="text" placeholder="search" onChange={this.searchBarHandler} className='searchbar' /><button className='gobutton' onClick={this.searchRedirect} > GO</button>
+                    {this.renderAutoBox()}
+                </Container>    
                 <form>
                 <Container fluid className='movie-list'>
                     <Row>

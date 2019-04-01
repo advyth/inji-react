@@ -20,6 +20,7 @@ class UMRouter extends Component
                     <Route path='/admin' component={Admin} />
                     <Route path='/movie/:id' component={MovieApp} />
                     <Route path='/search/:movie' component={SearchApp} />
+                    <Route path='/:account' component={LoginApp} />
                 </Switch>
             </BrowserRouter>
         );

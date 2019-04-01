@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import Alert from 'react-bootstrap/Alert';
+import Button from 'react-bootstrap/Button';
 import {Redirect} from 'react-router-dom';
 import LandingApp from '../HOME/LandingApp';
 import '../Styles/Login.css';
@@ -20,6 +22,9 @@ class LoginApp extends Component
             password : "",
             redirect : false,
             loginButtonValue : 'login',
+            showAlert : false,
+            alertMessage : "",
+            successShow : false,
         }
         this.usernameHandle = this.usernameHandle.bind(this);
         this.passwordHandle = this.passwordHandle.bind(this);
@@ -49,13 +54,21 @@ class LoginApp extends Component
                 }
                 else
                 {
-                    alert(response.data);
+                    self.setState({
+                        showAlert : true,
+                        alertMessage : "username/password is invalid.",
+                        loginButtonValue : "login",
+                    });
                 }
             });
         }
         else
         {
-            alert("Username and password cannot be empty");
+            self.setState({
+                    showAlert : true,
+                    alertMessage : "fields cannot be empty.",
+                    loginButtonValue : "login",
+                });
         }
         
     }
@@ -65,13 +78,28 @@ class LoginApp extends Component
     {
         this.setState({
             username : event.target.value,
+            showAlert : false,
+            successShow : false,
         });
     }
     passwordHandle(event)
     {
         this.setState({
             password : event.target.value,
+            showAlert : false,
+            successShow : false,
         });
+    }
+    componentDidMount()
+    {
+        if(this.props.match.params.account == "created=true")
+        {
+            this.setState({
+            successShow : true,
+            });
+        }
+        
+        console.log(this.state.successShow);
     }
     render()
     {
@@ -81,6 +109,18 @@ class LoginApp extends Component
         }
         return(
             <div className='bodyClass'>
+             <Alert show={this.state.showAlert} variant="danger">
+                  <Alert.Heading>Alert</Alert.Heading>
+                  <p>
+                    {this.state.alertMessage}<br />
+                  </p>
+             </Alert>
+             <Alert show={this.state.successShow} variant="success">
+                <Alert.Heading>Alert</Alert.Heading>
+                <p>
+                    Your account has been created, login to proceed.
+                </p>
+             </Alert>
                 <b><h1>inji</h1></b>
                 <strong><h3>movies. actors. reviews.</h3></strong>
                 <Container className='Container'>
@@ -93,6 +133,7 @@ class LoginApp extends Component
                         </Col>
                     </Row>
                 </Container>
+               
             </div>  
         );
     }
