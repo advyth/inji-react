@@ -373,7 +373,7 @@ body
 .detail-poster
 {
    
-    height: 65%;
+    height: 35%;
 }
 .review_text_field
 {
@@ -396,10 +396,10 @@ body
   color: red; /* Text color */
   cursor: pointer; /* Add a mouse pointer on hover */
   padding: 15px; /* Some padding */
-  border-radius: 20vh; /* Rounded corners */
+  border-radius: 2vh; /* Rounded corners */
   font-size: 18px; /* Increase font size */
   margin-right : 3%;
-  width:85px;
+  width:200px;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
   text-align: center;
   height: 85px;

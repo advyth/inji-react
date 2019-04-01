@@ -238,20 +238,34 @@ class MovieApp extends Component
 			<Container fluid>
 				<NavbarApp auth={localStorage.getItem('auth')}/>
 				<Row>
-					<Col sm className='movie-detail-card'>
-					
-						<h4><b>{this.state.moviedetails[0].name}</b></h4><br />
-
-						<Image className='detail-poster' src={this.state.moviedetails[0].url} fluid />
-						<div className='star-div'>
-							{this.renderStars()}
-						</div>
+					<Col className='movie-detail-card'>
+						<Row>
+							<Col style={{float : "left"}} className="movie-detail-card-1">
+								<h4><b>{this.state.moviedetails[0].name}</b></h4><br />
+								<Image className='detail-poster' src={this.state.moviedetails[0].url} fluid />
+								<div className='star-div'>
+									{this.renderStars()}
+								</div>
+							</Col>
+							<Col className="movie-detail-card-2">
+								<h4><b>Synopsis</b></h4><br/>
+								<p style={{textAlign : "justify"}}>The film revolves around four brothers who share a love-hate relationship with each other. Their relationship progresses to another level when Saji, Boney, and Franky decide to help Bobby stand by his love.</p>
+								<h4><b>General ratings</b></h4>
+								<p>Mostly positive</p><br />
+								<h4><b>Director</b></h4>
+								<p>Madhu C Narayanan</p><br />
+								<h4><b>Actors</b></h4>
+								<p>Fahadh Fassil</p>
+								
+							</Col>
+						</Row>
+						
 						
 
 					</Col>
 					<Col sm className='reviews'>
 						{this.renderReviews()}
-						<button class="floating-button" onClick={this.addReview} title="Go to top"><b>+</b></button>
+						<button class="floating-button" onClick={this.addReview} title="Go to top"><b>Add review</b></button>
 					</Col>
 					{this.showModal()}
 					

@@ -130,8 +130,8 @@ class LandingApp extends Component
                var div = [];
                for(var i = 0;i<this.state.autoComplete.length;i++)
                {    var url = "/movie/" + this.state.autoComplete[i].id;
-                    div.push(<a style={{color : "red"}} href={url}><h6 key={i}>{this.state.autoComplete[i].name}</h6></a>);
-                    div.push(<hr />)
+                    div.push(<a key={i+10} style={{color : "red"}} href={url}><h6 key={i}>{this.state.autoComplete[i].name}</h6></a>);
+                    div.push(<hr key={i} />)
                }
                return div;
                
