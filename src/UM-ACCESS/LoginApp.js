@@ -6,7 +6,6 @@ import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
 import {Redirect} from 'react-router-dom';
 import LandingApp from '../HOME/LandingApp';
-import '../Styles/Login.css';
 import axios from 'axios';
 
 
@@ -121,8 +120,8 @@ class LoginApp extends Component
                     Your account has been created, login to proceed.
                 </p>
              </Alert>
-                <b><h1>inji</h1></b>
-                <strong><h3>movies. actors. reviews.</h3></strong>
+                <b><h1 className="inji-heading">inji</h1></b>
+                <strong><h4><b>movies</b> and <b>reviews</b></h4></strong><br/>
                 <Container className='Container'>
                     <Row>
                         <Col className='LoginBox'>

@@ -19,6 +19,7 @@ class SearchApp extends Component
 			detail_redirect : false,
 			detail_redirect_id : "",
 			search_result : {0:{name : "", genre : "", direcor :"", url :"", id : ""}},
+			movie_message : "",
 		}
 		this.renderSearchMovies = this.renderSearchMovies.bind(this);
 		this.searchBarHandler = this.searchBarHandler.bind(this);
@@ -56,12 +57,14 @@ class SearchApp extends Component
 	}
 	renderResults()
 	{
+
 		var results = [];
 		for(var i=0;i<this.state.search_result.length;i++)
 		{
 			results.push(this.renderSearchMovies(i));
 		}
 		return results;
+		
 	}
 	componentDidMount()
 	{
@@ -74,9 +77,11 @@ class SearchApp extends Component
 			movie : this.state.movie,
 		})
 		.then(function(response){
-			if(response == "empty")
+			if(response.data == "empty")
 			{
-				alert("No such movies found");
+				self.setState({
+					movie_message : "No movies found :(",
+				});
 			}
 			else
 			{
@@ -121,6 +126,7 @@ class SearchApp extends Component
 				</Container>
 				<Container fluid>
 					{this.renderResults()}
+					<h5 style={{marginTop : "20vh"}}><i>{this.state.movie_message}</i></h5>
 				</Container>
 			</Container>);
 	}

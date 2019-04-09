@@ -135,8 +135,8 @@ class RegisterApp extends Component
                     {this.state.alertMessage}<br />
                   </p>
                 </Alert>
-                <h1>inji</h1>
-                <h3>movies. actors. reviews.</h3>
+                <b><h1 className="inji-heading">inji</h1></b>
+                <strong><h4><b>movies</b> and <b>reviews</b></h4></strong><br/>
                 <Container className='Container'>
                     <Row>
                         <Col className='LoginBox'>

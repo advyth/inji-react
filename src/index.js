@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './Styles/index.css';
+import './Styles/styles.css';
 import UMRouter from './UM-ACCESS/UMRouter';
 import * as serviceWorker from './serviceWorker';
 

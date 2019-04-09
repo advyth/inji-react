@@ -1,7 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+
 body
 {
     overflow-x:hidden;
     background-color: #eff3f8;
+    font-family: 'Montserrat', sans-serif;
 }
 .modal_submit_button
 {
@@ -13,7 +18,14 @@ body
     height: 7vh;
     border-radius: 0.8vh;
 }
-
+.inji-heading
+{
+    font-family: 'Raleway', sans-serif;
+}
+.model-content
+{
+    z-index: 9999;
+}
 .bodyClass
 {
     text-align: center;
@@ -128,7 +140,7 @@ body
     border-style: solid;
     border-width : 2px;
     border-color : #e00022;
-    margin-top : 10vh;
+    margin-top : 18vh;
     width : 40vw;
     height: 6vh;
     text-align: center;
@@ -260,6 +272,10 @@ body
     color : white;
     text-align: center;
     height: 10vh;
+    position: fixed;
+    z-index: 100;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
 
 }
 .nav-bar h2
@@ -284,16 +300,17 @@ body
     max-width : 60vw;
     position: fixed;
     height: 80%;
-    margin-top : 1%;
+    margin-top : 6%;
     margin-left : 4vh;
     text-align: center;
     padding-top: 4vh;
     border-radius: 2vh;
-
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
 .reviews
 {
+    margin-top: 5%;
     text-align: center;
     background-color : #e4e9f0;  
     margin-left: 62%;
@@ -373,7 +390,7 @@ body
 .detail-poster
 {
    
-    height: 35%;
+    height: 50vh;
 }
 .review_text_field
 {

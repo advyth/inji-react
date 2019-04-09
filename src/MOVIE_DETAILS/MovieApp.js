@@ -11,8 +11,6 @@ import star from '../Styles/star.png';
 import grey_star from '../Styles/grey_star.png';
 
 
-//TODO add modal for rating
-
 class MovieApp extends Component
 {
 	constructor(props)
@@ -23,7 +21,7 @@ class MovieApp extends Component
 			moviedetails : {0:{name : '', url : ''}},
 			review : 'default',
 			showModal : false,
-			star_rating : 0,
+			star_rating : 1,
 			star_type : '',
 			star_clicked : [1,0,0,0,0],
 			db_review : {0:{username : '', review : '', rating :'', id : ''}}
@@ -238,7 +236,7 @@ class MovieApp extends Component
 			<Container fluid>
 				<NavbarApp auth={localStorage.getItem('auth')}/>
 				<Row>
-					<Col className='movie-detail-card'>
+					<Col shadow-sm className='movie-detail-card'>
 						<Row>
 							<Col style={{float : "left"}} className="movie-detail-card-1">
 								<h4><b>{this.state.moviedetails[0].name}</b></h4><br />
@@ -259,9 +257,6 @@ class MovieApp extends Component
 								
 							</Col>
 						</Row>
-						
-						
-
 					</Col>
 					<Col sm className='reviews'>
 						{this.renderReviews()}

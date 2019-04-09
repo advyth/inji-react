@@ -41,7 +41,7 @@ class NavbarApp extends Component
           	<DropdownButton drop='left'  id="dropdown-basic-button" title={localStorage.getItem('name')}>
 				  <Dropdown.Item onClick={this.logout}>Logout</Dropdown.Item>
 			  </DropdownButton>
-              <a style={{color : "white"}} href="/home"><h2><b>inji</b></h2></a>
+              <a style={{color : "white"}} href="/home"><h2 className="inji-heading"><b>inji</b></h2></a>
               <br></br>
               
           </Container>
