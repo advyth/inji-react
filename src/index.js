@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './Styles/styles.css';
-import UMRouter from './UM-ACCESS/UMRouter';
+import ViewRouter from './Views/Router';
 import * as serviceWorker from './serviceWorker';
 
 
-ReactDOM.render(<UMRouter />, document.getElementById('root'));
+ReactDOM.render(<ViewRouter />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

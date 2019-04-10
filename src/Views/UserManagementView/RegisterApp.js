@@ -6,9 +6,9 @@ import Alert from 'react-bootstrap/Alert';
 import axios from 'axios';
 import LoginApp from './LoginApp';
 import {Redirect} from 'react-router-dom';
-import LandingApp from '../HOME/LandingApp';
-import green_tick from '../Styles/green-tick.png';
-import red_cross from '../Styles/red-cross.png';
+import LandingApp from '../../Views/HomeView/LandingApp';
+import green_tick from '../../Assets/green-tick.png';
+import red_cross from '../../Assets/red-cross.png';
 const server = "https://inji-backend.herokuapp.com/";
 
 

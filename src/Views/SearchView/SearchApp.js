@@ -4,7 +4,7 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Image from 'react-bootstrap/Image';
 import axios from 'axios';
-import NavbarApp from "../HOME/NavbarApp";
+import NavbarApp from "../HomeView/NavbarApp";
 import {Redirect} from "react-router-dom";
 const server = "https://inji-backend.herokuapp.com/";
 

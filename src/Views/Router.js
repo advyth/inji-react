@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import {BrowserRouter, Link, Route, Switch} from 'react-router-dom';
-import LoginApp from './LoginApp';
-import RegisterApp from './RegisterApp';
-import LandingApp from '../HOME/LandingApp';
-import Admin from '../ADMIN/Admin';
-import MovieApp from '../MOVIE_DETAILS/MovieApp';
-import SearchApp from '../SEARCH/SearchApp';
+import LoginApp from '../Views/UserManagementView/LoginApp';
+import RegisterApp from '../Views/UserManagementView/RegisterApp';
+import LandingApp from '../Views/HomeView/LandingApp';
+import Admin from '../Views/AdminView/Admin';
+import MovieApp from '../Views/MovieDetailsView/MovieApp';
+import SearchApp from '../Views/SearchView/SearchApp';
 
-class UMRouter extends Component
+class ViewRouter extends Component
 {
     render()
     {
@@ -26,4 +26,4 @@ class UMRouter extends Component
         );
     }
 }
-export default UMRouter;
+export default ViewRouter;
