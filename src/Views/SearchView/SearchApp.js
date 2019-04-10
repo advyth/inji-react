@@ -112,8 +112,19 @@ class SearchApp extends Component
 	{
 		if(this.state.redirect)
 		{
-			var url = "/search/"+this.state.search;
-			window.location = "http://"+window.location.hostname + ":3000" + url;
+			if(window.location.href[4] == ":" && this.state.search != "")
+			{
+				var url = "/search/"+this.state.search;
+				window.location = "http://"+window.location.hostname + ":3000" + url;
+				
+			}
+			else if(window.location.href[4] == "s" && this.state.search != "")
+			{
+				var url = "/search/"+this.state.search;
+				window.location = "http://"+window.location.hostname + url;
+				
+			}
+			
 		}
 		if(this.state.detail_redirect)
 		{
