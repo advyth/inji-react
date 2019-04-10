@@ -7,6 +7,8 @@ import Alert from 'react-bootstrap/Alert';
 import axios from 'axios';
 import Image from 'react-bootstrap/Image';
 import {Redirect} from 'react-router-dom';
+const server = "https://inji-backend.herokuapp.com/";
+
 
 class LandingApp extends Component
 {
@@ -39,7 +41,7 @@ class LandingApp extends Component
     getMovies()
     {
         var self = this;
-        axios.post('http://localhost:5000/api/get/movies',{
+        axios.post(server+'api/get/movies',{
             auth : true,
         })
         .then(function(response){
@@ -109,7 +111,7 @@ class LandingApp extends Component
             {
                 term = this.state.search;
             }
-            axios.post("http://localhost:5000/api/autocomplete/",{
+            axios.post(server+"api/autocomplete/",{
                 search : term,
             })
             .then(function(response){

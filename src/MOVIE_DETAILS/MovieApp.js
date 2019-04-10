@@ -9,6 +9,8 @@ import axios from 'axios';
 import NavbarApp from '../HOME/NavbarApp';
 import star from '../Styles/star.png';
 import grey_star from '../Styles/grey_star.png';
+const server = "https://inji-backend.herokuapp.com/";
+
 
 
 class MovieApp extends Component
@@ -41,7 +43,7 @@ class MovieApp extends Component
 	getMovieDetails()
 	{
 		var self = this;
-		axios.post('http://localhost:5000/api/get/single/movie',{
+		axios.post(server+'api/get/single/movie',{
 			auth : localStorage.getItem('auth'),
 			id : this.state.id,
 		})
@@ -62,7 +64,7 @@ class MovieApp extends Component
 	sendReview()
 	{
 		var self = this;
-		axios.post('http://localhost:5000/api/add/review',{
+		axios.post(server+'api/add/review',{
 			review : this.state.review,
 			id : this.state.id,
 			rating : this.state.star_rating,
@@ -195,7 +197,7 @@ class MovieApp extends Component
 	loadReviews()
 	{
 		var self = this;
-		axios.post('http://localhost:5000/api/get/reviews',{
+		axios.post(server+'api/get/reviews',{
 			id : this.state.id
 		})
 		.then(function(response){

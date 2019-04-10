@@ -3,6 +3,7 @@ import axios from 'axios';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+const server = "https://inji-backend.herokuapp.com/";
 
 
 class Admin extends Component
@@ -31,7 +32,7 @@ class Admin extends Component
 	}
 	addMovie()
 	{
-		axios.post('http://localhost:5000/admin/add',{
+		axios.post(server+'admin/add',{
 			moviename : this.state.movieName,
 			director : this.state.director,
 			genre : this.state.genre,

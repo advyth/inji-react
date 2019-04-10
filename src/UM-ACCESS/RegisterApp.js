@@ -9,6 +9,7 @@ import {Redirect} from 'react-router-dom';
 import LandingApp from '../HOME/LandingApp';
 import green_tick from '../Styles/green-tick.png';
 import red_cross from '../Styles/red-cross.png';
+const server = "https://inji-backend.herokuapp.com/";
 
 
 class RegisterApp extends Component
@@ -42,7 +43,7 @@ class RegisterApp extends Component
             {
                 axios({
                     method : 'post',
-                    url : 'http://localhost:5000/register',
+                    url : server+'register',
                     data : {
                         email : this.state.email,
                         username : this.state.username,

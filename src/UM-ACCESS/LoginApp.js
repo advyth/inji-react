@@ -38,7 +38,7 @@ class LoginApp extends Component
             this.setState({
                 loginButtonValue : "..."
             });
-            axios.post('http://localhost:5000/login',{
+            axios.post('https://inji-backend.herokuapp.com/login',{
                 email : this.state.username,
                 password : this.state.password,
             })

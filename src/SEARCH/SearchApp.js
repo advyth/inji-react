@@ -6,6 +6,8 @@ import Image from 'react-bootstrap/Image';
 import axios from 'axios';
 import NavbarApp from "../HOME/NavbarApp";
 import {Redirect} from "react-router-dom";
+const server = "https://inji-backend.herokuapp.com/";
+
 
 class SearchApp extends Component
 {
@@ -73,7 +75,7 @@ class SearchApp extends Component
 	getSearchItem()
 	{
 		var self = this;
-		axios.post("http://localhost:5000/api/search/movie/",{
+		axios.post(server+"api/search/movie/",{
 			movie : this.state.movie,
 		})
 		.then(function(response){
