@@ -250,13 +250,13 @@ class MovieApp extends Component
 							</Col>
 							<Col className="movie-detail-card-2">
 								<h4><b>Synopsis</b></h4><br/>
-								<p style={{textAlign : "justify"}}>The film revolves around four brothers who share a love-hate relationship with each other. Their relationship progresses to another level when Saji, Boney, and Franky decide to help Bobby stand by his love.</p>
+								<p style={{textAlign : "justify"}}>Synopsis placeholder</p>
 								<h4><b>General ratings</b></h4>
-								<p>Mostly positive</p><br />
+								<p>Rating placeholder</p><br />
 								<h4><b>Director</b></h4>
-								<p>Madhu C Narayanan</p><br />
+								<p>Director placeholder</p><br />
 								<h4><b>Actors</b></h4>
-								<p>Fahadh Fassil</p>
+								<p>Actor placeholder</p>
 								
 							</Col>
 						</Row>
