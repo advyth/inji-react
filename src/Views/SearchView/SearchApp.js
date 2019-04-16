@@ -6,7 +6,7 @@ import Image from 'react-bootstrap/Image';
 import axios from 'axios';
 import NavbarApp from "../HomeView/NavbarApp";
 import {Redirect} from "react-router-dom";
-const server = "https://inji-backend.herokuapp.com/";
+const server = require("../ServerConfig").server;
 
 
 class SearchApp extends Component

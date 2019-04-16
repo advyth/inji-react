@@ -9,7 +9,7 @@ import {Redirect} from 'react-router-dom';
 import LandingApp from '../../Views/HomeView/LandingApp';
 import green_tick from '../../Assets/green-tick.png';
 import red_cross from '../../Assets/red-cross.png';
-const server = "https://inji-backend.herokuapp.com/";
+const server = require("../ServerConfig").server;
 
 
 class RegisterApp extends Component

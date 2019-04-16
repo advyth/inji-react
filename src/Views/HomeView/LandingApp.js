@@ -7,7 +7,7 @@ import Alert from 'react-bootstrap/Alert';
 import axios from 'axios';
 import Image from 'react-bootstrap/Image';
 import {Redirect} from 'react-router-dom';
-const server = "https://inji-backend.herokuapp.com/";
+const server = require("../ServerConfig").server;
 
 
 class LandingApp extends Component

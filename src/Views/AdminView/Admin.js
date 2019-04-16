@@ -3,7 +3,7 @@ import axios from 'axios';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-const server = "https://inji-backend.herokuapp.com/";
+const server = require("../ServerConfig").server;
 
 
 class Admin extends Component
@@ -26,7 +26,7 @@ class Admin extends Component
 	handleChange(event)
 	{
 		this.setState({
-			[event.target.name] : event.target.value,
+			[event.target.name] : event.target.value,   
 		});
 
 	}

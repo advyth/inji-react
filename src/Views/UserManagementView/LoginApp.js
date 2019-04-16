@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button';
 import {Redirect} from 'react-router-dom';
 import LandingApp from '../../Views/HomeView/LandingApp';
 import axios from 'axios';
-
+const server = require("../ServerConfig").server;
 
 
 
@@ -38,7 +38,7 @@ class LoginApp extends Component
             this.setState({
                 loginButtonValue : "..."
             });
-            axios.post('https://inji-backend.herokuapp.com/login',{
+            axios.post(server+'login',{
                 email : this.state.username,
                 password : this.state.password,
             })

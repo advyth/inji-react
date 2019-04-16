@@ -4,12 +4,13 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Image from 'react-bootstrap/Image';
 import Modal from 'react-bootstrap/Modal';
+import Alert from 'react-bootstrap/Alert';
 import {Redirect} from 'react-router-dom';
 import axios from 'axios';
 import NavbarApp from '../../Views/HomeView/NavbarApp';
 import star from '../../Assets/star.png';
 import grey_star from '../../Assets/grey_star.png';
-const server = "https://inji-backend.herokuapp.com/";
+const server = require("../ServerConfig").server;
 
 
 
@@ -268,6 +269,7 @@ class MovieApp extends Component
 					
 				</Row>
 			</Container>
+
 			);
 	}
 }
