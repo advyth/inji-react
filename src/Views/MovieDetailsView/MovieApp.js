@@ -250,13 +250,13 @@ class MovieApp extends Component
 							</Col>
 							<Col className="movie-detail-card-2">
 								<h4><b>Synopsis</b></h4><br/>
-								<p style={{textAlign : "justify"}}>Synopsis placeholder</p>
+								<p >Synopsis placeholder</p>
 								<h4><b>General ratings</b></h4>
-								<p>Rating placeholder</p><br />
+								<p>{this.state.moviedetails[0].rating}</p><br />
 								<h4><b>Director</b></h4>
-								<p>Director placeholder</p><br />
+								<p>{this.state.moviedetails[0].director}</p><br />
 								<h4><b>Actors</b></h4>
-								<p>Actor placeholder</p>
+								<p>{this.state.moviedetails[0].actor}</p>
 								
 							</Col>
 						</Row>

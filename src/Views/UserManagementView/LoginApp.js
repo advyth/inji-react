@@ -24,6 +24,7 @@ class LoginApp extends Component
             showAlert : false,
             alertMessage : "",
             successShow : false,
+            adminRedirect : false,
         }
         this.usernameHandle = this.usernameHandle.bind(this);
         this.passwordHandle = this.passwordHandle.bind(this);
@@ -49,6 +50,12 @@ class LoginApp extends Component
                     localStorage.setItem('name', response.data[0])
                     self.setState({
                         redirect : true
+                    });
+                }
+                else if(response.data == "admin")
+                {
+                    self.setState({
+                        adminRedirect : true,
                     });
                 }
                 else
@@ -105,6 +112,10 @@ class LoginApp extends Component
         if(this.state.redirect)
         {
             return <Redirect to='/home' />
+        }
+        if(this.state.adminRedirect)
+        {
+            return <Redirect to='/admin' />
         }
         return(
             <div className='bodyClass'>

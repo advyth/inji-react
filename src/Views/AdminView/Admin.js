@@ -3,7 +3,10 @@ import axios from 'axios';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import {Link} from 'react-router-dom';
 const server = require("../ServerConfig").server;
+
+
 
 
 class Admin extends Component
@@ -49,7 +52,11 @@ class Admin extends Component
 	{
 		return(
 			<div className='detail-add'>
-				<h1>Add movie </h1>
+			<br />
+				<h1><u><Link style={{color : "red"}} to='/'>inji.</Link></u></h1>
+				<h6>admin</h6>
+				<br/>
+				<h3 style={{color : "red"}}>Add movie </h3>
 				<form>
 					<input type='text' className='firstInput' name='movieName' placeholder='movie name' onChange={this.handleChange}/><br/>
 					<input type='text' className='nextInput' name='director' placeholder='director' onChange={this.handleChange} /><br/>
