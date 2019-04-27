@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Alert from 'react-bootstrap/Alert';
+import Anime from 'react-anime';
 import axios from 'axios';
 import Image from 'react-bootstrap/Image';
 import {Redirect} from 'react-router-dom';
@@ -75,12 +76,12 @@ class LandingApp extends Component
     }
     renderRow(index)
     {
-         return(<Col name={index} onClick={()=>this.movieRedirect(index)} key={index} md={2} className='movie-card'>
+         return (<Anime translateY={[100,0]}><Col name={index} onClick={()=>this.movieRedirect(index)} key={index} md={2} className='movie-card'>
                 <h6>
                     {this.state.movies[index].name} 
                     <Image className='poster-img' src={this.state.movies[index].url} fluid></Image>
                 </h6>
-            </Col>);       
+            </Col></Anime>);       
         
     }
     searchRedirect()

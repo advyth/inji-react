@@ -8,6 +8,10 @@ body
     background-color: #eff3f8;
     font-family: 'Montserrat', sans-serif;
 }
+.review_thumb:hover
+{
+    cursor: pointer;
+}
 .modal_submit_button
 {
     margin-top : 4vh;
@@ -330,7 +334,7 @@ body
 }
 .review-card:hover
 {
-    background-color: white;
+    background-color: rgb(0, 0, 0);
     color : #e00022;
     transition-duration: 0.2s;
 }
@@ -395,7 +399,7 @@ body
     background-color: #e4e9f0;
     border : none;
     height: 20vh;
-    width: 30vw;
+    width: 25vw;
     margin-bottom: 4vh;
     text-align: center;
 }

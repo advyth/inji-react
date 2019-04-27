@@ -20,7 +20,9 @@ class Admin extends Component
 			genre : "",
 			actor : "",
 			rating : "",
-			url : ""
+			url : "",
+			synopsis : "",
+			tags : "",
 
 		}
 		this.handleChange = this.handleChange.bind(this);
@@ -42,6 +44,9 @@ class Admin extends Component
 			actor : this.state.actor,
 			rating : this.state.rating,
 			url : this.state.url,
+			synopsis : this.state.synopsis,
+			tags : this.state.tags,
+
 		})
 		.then((response)=>{
 			alert(response.data);
@@ -63,7 +68,9 @@ class Admin extends Component
 					<input type='text' className='nextInput' name='genre' placeholder='genre' onChange={this.handleChange} /><br/>
 					<input type='text' className='nextInput' name='actor' placeholder='actor' onChange={this.handleChange} /><br/>
 					<input type='text' className='nextInput' name='rating' placeholder='rating' onChange={this.handleChange} /><br/>
-					<input type='text' className='nextInput' name='url' placeholder='url' onChange={this.handleChange} /><br/>
+					<input type='text' className='nextInput' name='url' placeholder='url' onChange={this.handleChange} /><br/><br />
+					<textarea rows="10" cols="50" name="synopsis" onChange={this.handleChange} /><br />
+					<input type='text' className='nextInput' name ='tags' placeholder='tags' onChange={this.handleChange} /><br />
 					<input type='button' className='movie-submit' value='submit' onClick={this.addMovie} /><br/>
 				</form>
 			</div>

@@ -2,15 +2,20 @@ import React, {Component} from 'react';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import Anime from 'react-anime';
 import Image from 'react-bootstrap/Image';
 import Modal from 'react-bootstrap/Modal';
+import Badge from 'react-bootstrap/Badge';
 import Alert from 'react-bootstrap/Alert';
 import {Redirect} from 'react-router-dom';
 import axios from 'axios';
 import NavbarApp from '../../Views/HomeView/NavbarApp';
 import star from '../../Assets/star.png';
 import grey_star from '../../Assets/grey_star.png';
+import thumbs_up_w from "../../Assets/thumbs_up_white.png";
+import thumbs_down_w from "../../Assets/thumbs_down_white.png";
 const server = require("../ServerConfig").server;
+
 
 
 
@@ -75,6 +80,9 @@ class MovieApp extends Component
 			console.log(response.data);
 			self.modalHide();
 			self.loadReviews();
+		});
+		this.setState({
+			star_clicked : [1,0,0,0,0]
 		});
 	}
 	renderStars()
@@ -190,10 +198,12 @@ class MovieApp extends Component
 			review_card.push(<div className='review-card'>
 							<h6>"{this.state.db_review[i].review}"</h6>
 							{this.renderReviewCardStars(this.state.db_review[i].rating)}<br/>
-							<h7>By <b>{this.state.db_review[i].username} </b></h7>
+							<h7>By <b>{this.state.db_review[i].username} </b></h7><br />
+							<img class="review_thumb" style={{marginRight : "2vh"}} src={thumbs_up_w} height="20" width="20" />
+							<img class="review_thumb" src={thumbs_down_w} height="20" width="20" />
 						</div>);
 		}
-		return review_card;
+		return <Anime translateY={[-100,0]}>{review_card}</Anime>;
 	}
 	loadReviews()
 	{
@@ -250,7 +260,7 @@ class MovieApp extends Component
 							</Col>
 							<Col className="movie-detail-card-2">
 								<h4><b>Synopsis</b></h4><br/>
-								<p >Synopsis placeholder</p>
+								<p style={{textAlign : "justify"}}>{this.state.moviedetails[0].synopsis}</p>
 								<h4><b>General ratings</b></h4>
 								<p>{this.state.moviedetails[0].rating}</p><br />
 								<h4><b>Director</b></h4>
@@ -262,6 +272,7 @@ class MovieApp extends Component
 						</Row>
 					</Col>
 					<Col sm className='reviews'>
+					
 						{this.renderReviews()}
 						<button class="floating-button" onClick={this.addReview} title="Go to top"><b>Add review</b></button>
 					</Col>
