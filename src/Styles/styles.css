@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 @import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url('https://fonts.googleapis.com/css?family=Raleway:300');
+
 
 
 body
@@ -222,6 +224,21 @@ body
 {
     color : white;
 }
+.modal_kid_friendly_button
+{
+    margin-top : 5vh;
+    border-style : solid;
+    border-color : grey;
+    border-width: 1px;
+    padding : 1vh;
+    border-radius: 1vh;
+    
+}
+.modal_kid_friendly_button:focus
+{
+    outline : none;
+}
+
 .movie-list
 {
     background-color : #e6e8f0;
@@ -233,6 +250,9 @@ body
 .movie-card
 {
     height: 55vh;
+    animation-name: fade;
+    animation-duration: 0.4s;
+    animation-iteration-count: 1;
     padding-top: 1vh;
     background-color:#e00022;
     max-width: 20vw;
@@ -243,6 +263,11 @@ body
     color : white;
     border-radius: 1.2vh;
 
+}
+@keyframes fade
+{
+    from{opacity : 0;}
+    to{opacity: 1;}
 }
 .movie-card:hover
 {
@@ -301,15 +326,29 @@ body
     color : #e00022;
     max-width : 60vw;
     position: fixed;
-    height: 80%;
+    height: 85%;
     margin-top : 6%;
     margin-left : 4vh;
     text-align: center;
-    padding-top: 4vh;
-    border-radius: 2vh;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    
+}
+.movie-detail-card-2
+{
+    background: #ED213A;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #93291E, #ED213A);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #93291E, #ED213A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    color : white;
+    margin : 0;
+    height: 85vh;
 }
 
+.hover-image:hover
+{
+    cursor: pointer;
+}
 .reviews
 {
     margin-top: 5%;
@@ -322,6 +361,9 @@ body
 }
 .review-card
 {
+    animation-name: reviewAnimation;
+    animation-iteration-count: 1;
+    animation-duration: 0.4s;
     margin-right : 3%;
     padding-top : 3vh;
     margin-top : 2%;
@@ -332,11 +374,11 @@ body
     height: 100%;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
-.review-card:hover
+
+@keyframes reviewAnimation
 {
-    background-color: rgb(0, 0, 0);
-    color : #e00022;
-    transition-duration: 0.2s;
+    from{opacity: 0;}
+    to{opacity: 1;}
 }
 .comment
 {

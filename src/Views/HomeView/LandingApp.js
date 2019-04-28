@@ -35,6 +35,7 @@ class LandingApp extends Component
         this.renderAutoBox = this.renderAutoBox.bind(this);
 
     }
+    
     componentDidMount()
     {
         this.getMovies();
@@ -76,12 +77,12 @@ class LandingApp extends Component
     }
     renderRow(index)
     {
-         return (<Anime translateY={[100,0]}><Col name={index} onClick={()=>this.movieRedirect(index)} key={index} md={2} className='movie-card'>
+         return (<Col name={index} onClick={()=>this.movieRedirect(index)} key={index} md={2} className='movie-card'>
                 <h6>
                     {this.state.movies[index].name} 
                     <Image className='poster-img' src={this.state.movies[index].url} fluid></Image>
                 </h6>
-            </Col></Anime>);       
+            </Col>);       
         
     }
     searchRedirect()
