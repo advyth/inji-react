@@ -101,7 +101,7 @@ class MovieApp extends Component
 		})
 		.then(function(response){
 		
-			Location.reload();
+			document.location.reload();
 		});
 		this.setState({
 			star_clicked : [1,0,0,0,0]
