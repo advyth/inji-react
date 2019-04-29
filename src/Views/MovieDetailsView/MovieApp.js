@@ -41,6 +41,7 @@ class MovieApp extends Component
 			kid_friendly_button_color : "white",
 			kid_friendly_button_font_color : "red",
 			kid_friendly : 0,
+			thumb_class : "",
 		}
 		this.getMovieDetails = this.getMovieDetails.bind(this);
 		this.renderStars = this.renderStars.bind(this);
@@ -96,11 +97,11 @@ class MovieApp extends Component
 			rating : this.state.star_rating,
 			kid_friendly : this.state.kid_friendly,
 			username : localStorage.getItem('name'),
+			email : localStorage.getItem("email"),
 		})
 		.then(function(response){
 		
-			self.modalHide();
-			self.loadReviews();
+			Location.reload();
 		});
 		this.setState({
 			star_clicked : [1,0,0,0,0]
@@ -108,7 +109,30 @@ class MovieApp extends Component
 	}
 	renderStars()
 	{
-		var star_amount = this.state.moviedetails[0].rating/2;
+		var rating = this.state.moviedetails[0].rating;
+		var star_amount = 0
+		if(rating == 0)
+		{
+			star_amount = 1;
+		}
+		else if(rating <= 25)
+		{
+			star_amount = 2;
+		}
+		else if(rating <= 50)
+		{
+			star_amount = 3;
+		}
+		else if(rating <= 75)
+		{
+			star_amount = 4;
+		}
+		else if(rating > 75)
+		{
+			star_amount = 5;
+		}
+
+		
 		var stars = [];
 		for(var i=0;i<star_amount;i++)
 		{
@@ -215,7 +239,9 @@ class MovieApp extends Component
 			var self = this;
 			axios.post(server+'api/review/rate',{
 				review_id : review_id,
-				review_type : type
+				review_type : type,
+				id : this.state.id,
+				email : localStorage.getItem("email")
 			})
 			.then(function(response){
 				self.loadReviews();
@@ -240,7 +266,8 @@ class MovieApp extends Component
 	{
 		var self = this;
 		axios.post(server+'api/get/reviews',{
-			id : this.state.id
+			id : this.state.id,
+			email : localStorage.getItem("email")
 		})
 		.then(function(response){
 			self.setState({

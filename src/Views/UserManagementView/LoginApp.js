@@ -47,7 +47,8 @@ class LoginApp extends Component
                 if(response.data[1] == "Success")
                 {
                     localStorage.setItem('auth', true);
-                    localStorage.setItem('name', response.data[0])
+                    localStorage.setItem('name', response.data[0]);
+                    localStorage.setItem('email', this.state.username);
                     self.setState({
                         redirect : true
                     });
@@ -136,10 +137,12 @@ class LoginApp extends Component
                 <Container className='Container'>
                     <Row>
                         <Col className='LoginBox'>
+                           
                             <input type='text' className='InputBox-1' placeholder='email' onChange={this.usernameHandle} /><br/>
                             <input type='password' className='InputBox-2' placeholder='password' onChange={this.passwordHandle} /><br/>
                             <button className='LoginButton' onClick={this.login} >{this.state.loginButtonValue}</button> <br/><br/><br/>
                             <p>Don't have an account ? <a href='/register'>Register</a></p>
+                           
                         </Col>
                     </Row>
                 </Container>
