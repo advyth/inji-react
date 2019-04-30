@@ -75,24 +75,39 @@ class SearchApp extends Component
 	getSearchItem()
 	{
 		var self = this;
-		axios.post(server+"api/search/movie/",{
-			movie : this.state.movie,
-		})
-		.then(function(response){
-			if(response.data == "empty")
-			{
+		if(this.state.movie == "all")
+		{
+			axios.post(server + "api/all",{
+				auth : true
+			})
+			.then(function(response){
 				self.setState({
-					movie_message : "No movies found :(",
+					search_result : response.data
 				});
-			}
-			else
-			{
-				self.setState({
-					search_result : response.data,
-				});
-			}
-			
-		});
+			})
+		}
+		else
+		{
+			axios.post(server+"api/search/movie/",{
+				movie : this.state.movie,
+			})
+			.then(function(response){
+				if(response.data == "empty")
+				{
+					self.setState({
+						movie_message : "No movies found :(",
+					});
+				}
+				else
+				{
+					self.setState({
+						search_result : response.data,
+					});
+				}
+				
+			});
+		}
+		
 	}
 	 searchBarHandler(event)
 	
@@ -134,7 +149,7 @@ class SearchApp extends Component
 		return(<Container fluid style={{textAlign : "center"}}>
 				<NavbarApp auth={localStorage.getItem('auth')} />
 				<Container className="searchMovieContainer" style={{marginBottom : "6vh"}}>
-				       <input type="text" placeholder="search" onChange={this.searchBarHandler} className='searchbar' /><button className='gobutton' onClick={this.searchRedirect} > GO</button>
+				       <input type="text" placeholder="search, type all for all movies" onChange={this.searchBarHandler} className='searchbar' /><button className='gobutton' onClick={this.searchRedirect} > GO</button>
 						
 				</Container>
 				<Container fluid>

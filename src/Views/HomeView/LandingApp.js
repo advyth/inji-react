@@ -175,7 +175,7 @@ class LandingApp extends Component
             <Container fluid>
                 <NavbarApp auth={this.state.auth}/>
                 <Container fluid className='main-content'>
-                    <input style={{marginBottom : "2vh"}} type="text" placeholder="search" onChange={this.searchBarHandler} className='searchbar' /><button className='gobutton' onClick={this.searchRedirect} > GO</button>
+                    <input style={{marginBottom : "2vh"}} type="text" placeholder="search, type all for all movies" onChange={this.searchBarHandler} className='searchbar' /><button className='gobutton' onClick={this.searchRedirect} > GO</button>
                     {this.renderAutoBox()}
                 </Container>    
                 <form>
