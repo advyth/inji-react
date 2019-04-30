@@ -116,7 +116,9 @@ class LoginApp extends Component
         }
         if(this.state.adminRedirect)
         {
+            localStorage.setItem("admin_auth", "true");
             return <Redirect to='/admin' />
+            
         }
         return(
             <div className='bodyClass'>
