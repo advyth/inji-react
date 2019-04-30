@@ -34,38 +34,49 @@ class RegisterApp extends Component
         this.emailHandle = this.emailHandle.bind(this);
         this.register = this.register.bind(this);
     }
+    
     register()
     {
         var self = this;
-        if(this.state.username != '' && this.state.password != '')
+        if(this.state.username != '' && this.state.password != '' && this.state.email != '')
         {
             if(this.state.password == this.state.confirm_password)
             {
-                axios({
-                    method : 'post',
-                    url : server+'register',
-                    data : {
-                        email : this.state.email,
-                        username : this.state.username,
-                        password : this.state.password,                
-                    }
-                })
-                .then(function(response){
-                    if(response.data == "Registered")
+                    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.state.email))
                     {
-                        self.setState({
-                            redirect : true,
-                        });
-                        
+                        axios({
+                            method : 'post',
+                            url : server+'register',
+                            data : {
+                                email : this.state.email,
+                                username : this.state.username,
+                                password : this.state.password,                
+                            }
+                        })
+                        .then(function(response){
+                            if(response.data == "Registered")
+                            {
+                                self.setState({
+                                    redirect : true,
+                                });
+                                
+                            }
+                            else if(response.data == "Exists")
+                            {
+                                self.setState({
+                                    showAlert : true,
+                                    alertMessage : "This account exists.",
+                                });
+                            }
+                    });
                     }
-                    else if(response.data == "Exists")
+                    else
                     {
-                        self.setState({
-                            showAlert : true,
-                            alertMessage : "This account exists.",
+                        this.setState({showAlert : true,
+                            alertMessage : "Invalid email"
                         });
                     }
-            });
+               
             
             }
             else
